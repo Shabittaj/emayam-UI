@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 throw new Error('No token found. Please log in again.');
             }
 
-            const response = await fetch('http://127.0.0.1:8000/api/profile/', {
+            const response = await fetch('https://emayam-api.onrender.com/api/profile/', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 if (response.status === 401 && errorText.includes('Token is invalid or expired')) {
                     // Token expired, attempt to refresh token
                     const refreshToken = localStorage.getItem('refresh_token');
-                    const refreshResponse = await fetch('http://127.0.0.1:8000/token/refresh/', {
+                    const refreshResponse = await fetch('https://emayam-api.onrender.com/token/refresh/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     token = newData.access; // Update token variable
 
                     // Retry original request with new access token
-                    const retryResponse = await fetch('http://127.0.0.1:8000/api/profile/', {
+                    const retryResponse = await fetch('https://emayam-api.onrender.com/api/profile/', {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 throw new Error('No token found. Please log in again.');
             }
 
-            const response = await fetch('http://127.0.0.1:8000/api/profile/', {
+            const response = await fetch('https://emayam-api.onrender.com/api/profile/', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
